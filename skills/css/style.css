@@ -1,0 +1,135 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 2rem;
+    background:  #04364A;
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    font-family: sans-serif;
+    z-index: 0;
+}
+
+.card{
+    background-color: #176B87;
+    width: 40rem;
+    height: 40rem;
+    border-radius: 5rem;
+    box-shadow: 1rem 1rem 2rem 0 rgb(0, 0, 0, 0.7);
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.card--buy{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 4rem;
+}
+
+.card--buy img{
+    width: 25rem;
+    height: 25rem;
+}
+
+.card--buy p{
+    height: 20%;
+    font-size: 70%;
+}
+
+.card--slider{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem;
+}
+
+.card--slider > h2{
+    font-size: 300%;
+}
+
+.card--slider > input{
+    appearance: none;
+    width: 100%;
+    border-radius: 5rem;
+    height: 1.8rem;
+    background: linear-gradient(to right, #33cc33, #196619);
+}
+
+.card--slider > input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(to right, #176B87, #04364A);
+    border: 0.5px rgb(0, 0, 0, 0.3) solid;
+    cursor: pointer;
+}
+
+.card--stopwatch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.timerText{
+    font-size: 200%;
+}
+
+.button{
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+    background: none;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    box-shadow: 1rem 0.5rem 2rem 0 rgb(0, 0, 0, 0.6);
+    border-radius: 12%;
+}
+
+.button--start{
+    box-shadow: 0;
+    background: green;
+}
+
+.button--start:hover{
+    position: relative;
+    bottom: 0.1rem;
+}
+
+.button--stop{
+    background: red;
+}
+
+.button--stop:hover{
+    position: relative;
+    bottom: 0.1rem;
+}
+
+.button--reset{
+    background: blue;
+}
+
+.button--reset:hover{
+    position: relative;
+    bottom: 0.1rem;
+}
