@@ -1,44 +1,56 @@
-const startButton = document.getElementById("js--start");
-const stopButton = document.getElementById("js--stop");
-const resetButton = document.getElementById("js--reset");
-let seconds = 0;
-let minutes = 0;
+let timer;
+let startTime;
 let running = false;
 
-const secondsTimer = document.getElementById("js--secondsTimer")
-const minutesTimer = document.getElementById("js--minutesTimer")
-const minisecondsTimer = document.getElementById("js--minisecondsTimer")
-
-let timer;
-
-startButton.onclick = function(){
-    if(running === true){
-        return;
-    }
-
-    running = true;
-    timer = setInterval(function(){
-        seconds += 1;
-        if(seconds === 60){
-            minutes += 1;
-            minutesTimer.innerText = minutes;
-            seconds = 0;
-        }
-        secondsTimer.innerText = seconds; 
-    }, 1000);
-}
-
-stopButton.onclick = function(){
+function startStop() {
+  if (running) {
     clearInterval(timer);
+    document.getElementById('startStopBtn').innerText = 'Start';
     running = false;
+  } else {
+    startTime = new Date().getTime() - (pausedTime || 0);
+    timer = setInterval(updateDisplay, 1000); // Update every second
+    document.getElementById('startStopBtn').innerText = 'Stop';
+    running = true;
+  }
 }
 
-resetButton.onclick = function(){
-    seconds = 0;
-    minutes = 0;
-    minutesTimer.innerText = 0;
-    secondsTimer.innerText = 0;
+function reset() {
+  clearInterval(timer);
+  document.getElementById('startStopBtn').innerText = 'Start';
+  running = false;
+  pausedTime = 0;
+  document.getElementById('display').innerText = '00:00';
 }
+
+function updateDisplay() {
+  let elapsedTime = Math.floor((new Date().getTime() - startTime) / 1000); // Elapsed time in seconds
+  let minutes = Math.floor(elapsedTime / 60);
+  let seconds = elapsedTime % 60;
+
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+
+  document.getElementById('display').innerText = `${minutes}:${seconds}`;
+}
+
+let pausedTime;
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden) {
+    if (running) {
+      clearInterval(timer);
+      pausedTime = new Date().getTime() - startTime;
+      running = false;
+    }
+  } else {
+    if (!running && typeof pausedTime !== 'undefined') {
+      startTime = new Date().getTime() - pausedTime;
+      timer = setInterval(updateDisplay, 1000); // Update every second
+      running = true;
+    }
+  }
+});
+
 
 const rangeValue = document.getElementById("js--rangeValue");
 const slider = document.getElementById("js--slider");

@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&family=Tilt+Neon&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,16 +23,11 @@
         <p id="js--text"></p>
     </article>
     <article class="card card--stopwatch">
-        <div>
-            <span class="timerText" id="js--minutesTimer">0</span>
-            <span class="timerText">:</span>
-            <span class="timerText" id="js--secondsTimer">0</span>
-        </div>
-        <section class="buttonWrapper">
-            <button class="button button--start" id="js--start">Start</button>
-            <button class="button button--stop" id="js--stop">Stop</button>
-            <button class="button button--reset" id="js--reset">Reset</button>
-        </section>
+            <div id="display" class="digit timerText">00:00</div>
+            <div class="controls">
+              <button class="button" id="startStopBtn" onclick="startStop()">Start</button>
+              <button class="button" onclick="reset()">Reset</button>
+            </div>
     </article>
 </body>
 
