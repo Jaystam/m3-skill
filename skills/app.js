@@ -9,7 +9,7 @@ function startStop() {
     running = false;
   } else {
     startTime = new Date().getTime() - (pausedTime || 0);
-    timer = setInterval(updateDisplay, 1000); // Update every second
+    timer = setInterval(updateDisplay, 1000);
     document.getElementById('startStopBtn').innerText = 'Stop';
     running = true;
   }
@@ -24,7 +24,7 @@ function reset() {
 }
 
 function updateDisplay() {
-  let elapsedTime = Math.floor((new Date().getTime() - startTime) / 1000); // Elapsed time in seconds
+  let elapsedTime = Math.floor((new Date().getTime() - startTime) / 1000);
   let minutes = Math.floor(elapsedTime / 60);
   let seconds = elapsedTime % 60;
 
